@@ -1,0 +1,25 @@
+name: Create Release Branch
+on:
+  workflow_dispatch:
+    inputs:
+      versionName:
+        description: "Optional Override for Auto-incremented Release Version (X.X.X)"
+        required: false
+
+jobs:
+  createrelease:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      
+      - name: Get and set release tag environment variable
+        run: |
+          RELEASE_TAG=$(./.github/scripts/release_tag.sh)
+          echo "RELEASE_TAG=${RELEASE_TAG}" >> $GITHUB_ENV
+
+      - name: Setting release tag
+        run: echo "RELEASE TAG will be ${{ env.RELEASE_TAG }}"
+
+          
