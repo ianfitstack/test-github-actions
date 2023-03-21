@@ -5,6 +5,8 @@
 # auto-increments and generates next tag value or validates provided tag value
 #
 
+set -x
+
 RELEASE_TAG_REGEX='(^[0-9]+\.[0-9]+)\.([0-9]+)$'
 RELEASE_TAG_LATEST="$(git tag | egrep $RELEASE_TAG_REGEX | sort -V | tail -n 1)"
 
