@@ -16,6 +16,7 @@ jobs:
       
       - name: Get and set release tag environment variable
         run: |
+          git tag
           RELEASE_TAG=$(./.github/scripts/release_tag.sh)
           echo "RELEASE_TAG=${RELEASE_TAG}" >> $GITHUB_ENV
 
